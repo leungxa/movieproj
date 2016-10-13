@@ -1,34 +1,25 @@
-{% load staticfiles %}
+{% extends 'movies/base_template.html' %}
 
-<!doctype html>
-<html ng-app="moviesApp">
-  <body>
-    <div ng-controller="moviesController" ng-cloak>
-      <form name="searchForm" ng-submit="searchQuery(query)">
-        <label>Find a movie:</label>
-        <input type="text" ng-model="query" placeholder="Titanic" required/>
-        <button type="submit">search</button>
-      </form>
-      <br>
-      <hr>
-      <div class="popular">
-        <div class="loading" ng-show="!popularMovies" >
-          Loading popular movies
-        </div>
-        <div class="popular-movies" ng-show="popularMovies" >
-          <h1>Current Top 10 Movies</h1>
-          <div ng-repeat="movie in popularMovies">
-            {$ $index+1 $}. {$ movie.title $}
-            <br>
-            <img src="https://image.tmdb.org/t/p/w300/{$ movie.poster_path $}"></img>
-          </div>
-        </div>
-      </div>
-      <div class="results" ng-show="queryResults">
-        <h1>Results for {$ searchedQuery $}!</h1>
-      </div>
+{% block content %}
+  <div class="popular">
+    <div class="popular-movies">
+      <h1>Current Top 10 Movies</h1>
+        <ol>
+        {% for movie in movies %}
+          <li>
+            <div>
+              <span>
+                <img height="200" src="{{ movie.image }}"></img>
+              </span>
+              <span>
+                <a href="/movies/{{ movie.id }}">
+                  {{ movie.title }}
+                </a>
+              </span>
+            </div>
+          </li>
+        {% endfor %}
+      </ol>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-    <script src="{% static "movies/moviesApp.js" %}"></script>
-  </body>
-</html>
+  </div>
+{% endblock %}

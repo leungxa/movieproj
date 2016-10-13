@@ -1,0 +1,49 @@
+{% extends 'movies/base_template.html' %}
+
+{% block content %}
+  <div class="results">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1>Results for '{{ query }}'</h1>
+      </div>
+    </div>
+    {% for movie in results %}
+      <div class="row">
+        <div class="col-xs-12">
+          <span>
+            <img height="200" src="{{ movie.image }}"></img>
+          </span>
+          <span>
+            <a href="{{ movie.details_url }}">
+              {{ movie.title }}
+            </a>
+          </span>
+          <span>
+            ({{ movie.year }})
+          </span>
+        </div>
+      </div>
+    {% endfor %}
+    <div class="row">
+      <div class="col-xs-12">
+        {% if page > 1 %}
+        <span>
+          <a href="/movies/search/?query={{ query }}&page={{ page|add:"-1" }}">
+            Previous
+          </a>
+        </span>
+        {% endif %}
+        <span>
+          {{ page }} of {{ total_pages }}
+        </span>
+        {% if page != total_pages %}
+        <span>
+          <a href="/movies/search/?query={{ query }}&page={{ page|add:"1" }}">
+            Next
+          </a>
+        <span>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

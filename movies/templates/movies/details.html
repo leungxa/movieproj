@@ -1,0 +1,29 @@
+{% extends 'movies/base_template.html' %}
+{% load humanize %}
+
+{% block content %}
+  <div class="title">
+    <h1>{{ movie.title }} ({{ movie.year }})</h1>
+  </div>
+  <div class"details">
+  {{ movie.release_date }} | {{ movie.runtime }} min. | {{ movie.vote_avg }}/10
+  <br/>
+  {% for genre in movie.genres %}
+    {% if forloop.first %}
+      {{ genre.name }}
+    {% else %}
+      | {{ genre.name }}
+    {% endif %}
+  {% endfor %}
+  </div>
+  <div class="summary">
+    <h2> Summary </h2>
+    <span>{{ movie.overview }}</span>
+  </div>
+  <div class="more-info">
+    <p>Status: {{ movie.status }}</p>
+    <p>Budget: ${{ movie.budget|intcomma }}</p>
+    <p>Revenue: ${{ movie.revenue|intcomma }}</p>
+  </div>
+  {{all_data}}
+{% endblock %}
