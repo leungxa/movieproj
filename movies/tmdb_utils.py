@@ -12,7 +12,6 @@ def send_tmdb_request(path, params=None):
     headers = {'content-type': 'application/json'}
 
     response = requests.get(url, params=payload, headers=headers)
-    print response.url
     return response
 
 def tmdb_popular():

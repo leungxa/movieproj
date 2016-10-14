@@ -60,8 +60,8 @@ def movie_info(request, movie_id):
     movie_data = tmdb_movie_info(movie_id)
     release_date = 'Unknown Release Date'
     release_year = 'Unspecified'
-    if movie['release_date']:
-        dt = datetime.datetime.strptime(movie['release_date'], '%Y-%m-%d')
+    if movie_data['release_date']:
+        dt = datetime.datetime.strptime(movie_data['release_date'], '%Y-%m-%d')
         release_year = dt.year
         release_date = dt.strftime('%B %-d, %Y')
     context['movie'] = {
