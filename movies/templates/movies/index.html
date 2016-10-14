@@ -9,19 +9,19 @@
         </div>
       </div>
       {% for movie in movies %}
-        <div class="row top-info">
-          <div class="top-number">
-            {{ forloop.counter }}
-          </div>
-          <div class="top-image">
-            <img src="{{ movie.image }}"></img>
-          </div>
-          <div class="top-title">
-            <a href="/movies/{{ movie.id }}">
+        <a href="/movies/{{ movie.id }}" class="search-result-link">
+          <div class="row top-info">
+            <div class="top-number">
+              {{ forloop.counter }}
+            </div>
+            <div class="top-image">
+              <img src="{{ movie.poster_image }}"></img>
+            </div>
+            <div class="top-title">
               {{ movie.title }}
-            </a>
+            </div>
           </div>
-        </div>
+        </a>
       {% endfor %}
     </div>
   </div>

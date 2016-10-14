@@ -8,22 +8,19 @@
       </div>
     </div>
     {% for movie in results %}
-      <div class="row search-result-row">
+    <a href="{{ movie.details_url }}">
+      <div class="row search-results-row">
         <div class="col-xs-12">
           <div class="search-results-img-container">
-            <a href="{{ movie.details_url }}">
-            {% if movie.image %}
-              <img src="{{ movie.image }}" class="img-thumbnail search-results"></img>
+            {% if movie.poster_image %}
+              <img src="{{ movie.poster_image }}" class="poster-image search-results"></img>
               {% else %}
-              <div class="img-thumbnail search-results no-image">NO IMAGE</div>
+              <div class="poster-image no-image search-results">NO IMAGE</div>
             {% endif %}
-            </a>
           </div>
           <div class="search-results-title-info">
             <span>
-              <a href="{{ movie.details_url }}">
-                {{ movie.title }}
-              </a>
+              {{ movie.title }}
             </span>
             <span>
               ({{ movie.year }})
@@ -31,8 +28,9 @@
           </div>
         </div>
       </div>
+    </a>
     {% endfor %}
-    <div class="row">
+    <div class="row search-page-nav">
       <div class="col-xs-12">
         {% if page > 1 %}
         <span>

@@ -1,29 +1,51 @@
 {% extends 'movies/base_template.html' %}
 {% load humanize %}
+{% load movie_extras %}
 
 {% block content %}
-  <div class="title">
-    <h1>{{ movie.title }} ({{ movie.year }})</h1>
+  <div class="row details-title-container" {% if movie.backdrop_image %}style="background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url({{ movie.backdrop_image }})"{% endif %}>
+    <div class="col-xs-12 details-title-elements">
+      <div class="details-title">
+        <h1>{{ movie.title }} ({{ movie.year }})</h1>
+      </div>
+      <div class="details-movie-specs">
+      {{ movie.release_date }} | {{ movie.runtime }} min. | {{ movie.vote_avg }}/10
+      <br/>
+      {% for genre in movie.genres %}
+      {% if not forloop.first %} | {% endif %}
+        {{ genre.name }}
+      {% endfor %}
+      </div>
+    </div>
   </div>
-  <div class"details">
-  {{ movie.release_date }} | {{ movie.runtime }} min. | {{ movie.vote_avg }}/10
-  <br/>
-  {% for genre in movie.genres %}
-    {% if forloop.first %}
-      {{ genre.name }}
-    {% else %}
-      | {{ genre.name }}
+  <div class="row details-poster-summary">
+    <div class="details-poster-image-container col-xs-12 col-sm-4 col-md-2">
+    {% if movie.poster_image %}
+      <img src="{{ movie.poster_image }}" class="poster-image details-poster"></img>
+      {% else %}
+      <div class="poster-image no-image">NO IMAGE</div>
     {% endif %}
-  {% endfor %}
+    </div>
+    <div class="details-summary col-xs-12 col-sm-8 col-md-10">
+      <h2> Summary </h2>
+      <span>{{ movie.overview }}</span>
+    </div>
   </div>
-  <div class="summary">
-    <h2> Summary </h2>
-    <span>{{ movie.overview }}</span>
+  <div class="row details-release-info-container">
+    <div class="col-xs-12 details-release-info">
+      <h3>Release Info</h3>
+      <p>Status: {{ movie.status }}</p>
+      <p>Budget: ${{ movie.budget|intcomma }}</p>
+      <p>Revenue: ${{ movie.revenue|intcomma }}</p>
+      <p>Languages: {{ movie.languages|join_name_elements_by:", " }}
+      </p>
+      <p>Produced by: {{ movie.production_companies|join_name_elements_by:", "}}
+      </p>
+      <p>Produced in: {{ movie.production_countries|join_name_elements_by:", "}}
+      </p>
+      {% if movie.imdb_url %}
+      <p>For more info go to <a href="{{ movie.imdb_url }}" target="_blank">IMDB</a>
+      {% endif %}
+    </div>
   </div>
-  <div class="more-info">
-    <p>Status: {{ movie.status }}</p>
-    <p>Budget: ${{ movie.budget|intcomma }}</p>
-    <p>Revenue: ${{ movie.revenue|intcomma }}</p>
-  </div>
-  {{all_data}}
 {% endblock %}

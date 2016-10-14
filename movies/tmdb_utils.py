@@ -35,9 +35,14 @@ def tmdb_movie_info(movie_id):
     response = send_tmdb_request(path)
     return json.loads(response.text)
 
-def get_tmdb_poster_url(url):
-    if url:
-        return 'https://image.tmdb.org/t/p/w300/{}'.format(url)
+def get_tmdb_poster_url(path):
+    if path:
+        return 'https://image.tmdb.org/t/p/w300{}'.format(path)
+    return None
+
+def get_tmdb_backdrop_url(path):
+    if path:
+        return 'https://image.tmdb.org/t/p/w1280{}'.format(path)
     return None
 
 CONFIGURATION = {

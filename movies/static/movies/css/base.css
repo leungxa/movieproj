@@ -8,6 +8,16 @@ body {
   padding: 10px 0;
   margin-bottom: 15px;
   background-color: #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.top-info:hover {
+  background-color: #c5c5c5;
+  transition: background-color 0.2s ease;
+}
+
+.search-result-link:hover {
+  text-decoration: none;
 }
 
 .top-info .top-number {
@@ -33,6 +43,7 @@ body {
   width: 58%;
   vertical-align: middle;
   text-align: left;
+  color: #333;
 }
 
 @media(min-width:740px) {
@@ -51,12 +62,6 @@ body {
     vertical-align: middle;
     text-align: center;
   }
-}
-
-.search-bar-container {
-  /*line-height: 45px;
-  vertical-align: middle;
-  text-align: center;*/
 }
 
 /* search_bar css */
@@ -82,30 +87,47 @@ body {
 }
 
 /* search results css */
-.search-result-row {
+.search-results-row {
   margin-bottom: 10px;
   padding: 10px 0;
   background-color: #f8f8f8;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.search-results-row:hover {
+  background-color: #c5c5c5;
+  transition: background-color 0.2s ease;
 }
 
 .search-results-img-container {
   display: inline-block;
-  margin-right: 10px;
-  min-width: 137px;
-  width: 16%;
+  margin-right: 25px;
+  min-width: 86px;
+  /*width: 16%;*/
 }
 
-.search-results.img-thumbnail {
-  height: 200px;
-  width: 137px;
-  line-height: 200px;
+.poster-image {
   background-color: #f0f0f0;
 }
 
-.search-results.img-thumbnail.no-image {
+.search-results.poster-image {
+  height: 125px;
+  width: 86px;
+  line-height: 125px;
+}
+
+.poster-image.no-image {
   color: #B3B3B3;
   text-align: center;
   font-weight: 600;
+}
+
+.search-results-title-info {
+  display: inline-block;
+  font-size: 16px;
+  width: 46%;
+  color: #333;
 }
 
 @media(min-width:740px) {
@@ -113,9 +135,48 @@ body {
     width: 65%;
   }
 }
-.search-results-title-info {
-  display: inline-block;
+.search-page-nav {
+  margin-bottom: 50px;
+}
+
+/* details css */
+.details-title-container {
+  min-height: 250px;
+  background-size: cover;
+  background-color: #2b2b2b;
+  color: #e8e8e8;
+  position: relative;
+}
+
+.details-title-elements {
+  position: absolute;
+  bottom: 10px;
+}
+
+.details-movie-specs {
   font-size: 16px;
-  overflow: hidden;
-  width: 46%;
+}
+
+.details-poster-summary {
+  margin: 15px 0;
+  padding: 20px 0;
+  background-color: #fdf8e5;
+}
+
+.details-poster {
+  max-width: 150px;
+}
+
+.details-poster-image-container {
+  text-align: center;
+}
+
+.details-summary h2 {
+  margin-top: 0px;
+}
+
+.details-release-info {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  background-color: #f0f0f0;
 }
