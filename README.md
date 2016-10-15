@@ -2,8 +2,7 @@
 Movie project utilizing TheMovieDB API
 
 # Set up instructions
-Install Django via pip (project requires ver 1.10)
-
+### Install Django via pip (project requires ver 1.10)
 Install pip and virtualenv
 ```
 (for ubuntu)
@@ -18,12 +17,13 @@ sudo pip install virtualenv
 ```
 Create virtual environment inside project directory
 ```
-mkdir ~/virtualenvdir
-cd ~/virtualenvdir
+mkdir ~/projectdir
+cd ~/projectdir
 virtualenv newenv
 source newenv/bin/activate
 ```
 Install django inside virtual environment
+
 Set up and verify django installation
 ```
 sudo pip install django
@@ -35,7 +35,14 @@ Set up a virtualenvironment
 pip install -r requirements
 ```
 
-Ready to launch server
+### Set API key from themoviedb as environment variable
+
+Add line `export TMDB_API_KEY={{ API_KEY }}` to `~/.bash_profile`, then update:
+```
+source ~/.bash_profile
+```
+
+### Ready to launch server
 ```
 python manage.py runserver 0.0.0.0:8000
 ```
