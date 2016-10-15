@@ -37,7 +37,7 @@ pip install -r requirements
 
 ### Set API key from themoviedb as environment variable
 
-Add line `export TMDB_API_KEY={{ API_KEY }}` to `~/.bash_profile`, then update:
+Add line `export TMDB_API_KEY=(API key goes here)` to `~/.bash_profile`, then update:
 ```
 source ~/.bash_profile
 ```
