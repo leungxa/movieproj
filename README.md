@@ -30,9 +30,9 @@ sudo pip install django
 django-admin --version
 ```
 
-Set up a virtualenvironment
+Install requirements for django project (from project directory)
 ```
-pip install -r requirements
+pip install -r requirements.txt
 ```
 
 ### Set API key from themoviedb as environment variable
