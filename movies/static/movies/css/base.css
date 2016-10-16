@@ -46,7 +46,7 @@ body {
   color: #333;
 }
 
-@media(min-width:740px) {
+@media(min-width:768px) {
   body {
     padding-top: 50px;
   }
@@ -80,7 +80,7 @@ body {
   margin-bottom: 15px;
 }
 
-@media(min-width:740px) {
+@media(min-width:768px) {
   .search-btn {
     margin-bottom: 0px;
   }
@@ -130,7 +130,7 @@ body {
   color: #333;
 }
 
-@media(min-width:740px) {
+@media(min-width:768px) {
   .search-results-title-info {
     width: 65%;
   }
